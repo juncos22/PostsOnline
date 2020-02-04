@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+<title></title>
+<meta charset="utf8">
+</head>
+<body>
+	<div th:replace="master/layout :: top-content"></div>
+
+	<div class="container" style="margin-top: 15%; margin-bottom: 5%;">
+		<div class="jumbotron text-center">
+			<h1 class="display-4">Acerca de Blog Online</h1>
+			<p class="lead">
+				Este proyecto web es TOTALMENTE GRATUITO, y pretende estarlo <br>
+				permanentemente, y sin anuncios. Por lo tanto no estaría <br>
+				de mas que me mandes una donación monetaria por medio de Mercado Pago. <br>
+				Tambien podés mandar tus sugerencias para mejorar este proyecto. <br>
+				Muchas gracias por visitar este sitio web!
+			</p>
+			<hr class="my-4">
+			<p>Realizá una donación por Mercado Pago!</p>
+			<a class="btn btn-primary btn-lg" href="#" role="button">
+				DONAR <i class="fa fa-credit-card"></i>	
+			</a>
+		</div>
+	</div>
+
+	<div th:replace="master/layout :: bottom-content"></div>
+</body>
+</html>

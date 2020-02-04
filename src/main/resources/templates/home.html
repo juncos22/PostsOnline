@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+<meta charset="utf8">
+</head>
+<body>
+	<div th:replace="master/layout :: top-content"></div>
+
+	<!-- Hero section -->
+	<section class="hero-section overflow-hidden">
+		<div class="hero-slider owl-carousel">
+			<div
+				class="hero-item set-bg d-flex align-items-center justify-content-center text-center"
+				data-setbg="/img/slider-bg-1.jpg">
+				<div class="container">
+					<h2>Bienvenido!</h2>
+					<p>
+						En esta pagina podrás publicar tus artículos para que todo el
+						mundo pueda <br> verlos. Necesitas una cuenta para
+						publicarlos.
+					</p>
+				</div>
+			</div>
+			<div
+				class="hero-item set-bg d-flex align-items-center justify-content-center text-center"
+				data-setbg="/img/slider-bg-2.jpg">
+				<div class="container">
+					<h2>Los Mejores Articulos!</h2>
+					<p>
+						Escribe y lee los mejores articulos sobre cualquier categoria! <br>
+						(Juegos, Software, Peliculas, Sin Categoria, entre otros). <br>
+						Informate sobre tus temas favoritos. <br> Puedes sugerir
+						nuevas categorias. No olvides que los articulos son aprobados
+						primero <br> antes de ser publicados
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end-->
+
+	<div th:if="${mensaje}">
+		<div class="alert alert-success alert-dismissible fade show"
+			role="alert"
+			style="height: 100px; margin-top: 15%; margin-bottom: 5%;">
+			<strong th:text="${mesaje}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</div>
+
+	<!-- Intro section -->
+	<section class="intro-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4" th:each="a : ${articulosList}">
+					<div class="intro-text-box text-box text-white">
+						<div class="top-meta">
+							<span th:text="${a.creacion}"></span> / en 
+							<a href="" th:text="${a.categoria.tipo}"></a>
+						</div>
+						<h3 th:text="${a.titulo}"></h3>
+						<p th:text="${a.descripcion}"></p>
+						<a th:href="@{/articulos/detalles(id=${a.id})}" 
+							class="read-more">Leer Más<img
+							th:src="@{/img/icons/double-arrow.png}" alt="#" /></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Intro section end -->
+
+
+	<!-- Blog section -->
+	<section class="blog-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-9 col-lg-8 col-md-7">
+					<div class="section-title text-white">
+						<h2>Articulos Recientes</h2>
+					</div>
+					<div th:each="art : ${articulos}">
+						<!-- Blog item -->
+						<div class="blog-item">
+							<div class="blog-thumb">
+								<img th:src="${art.foto}" alt="foto" width="300" height="300">
+							</div>
+							<div class="blog-text text-box text-white">
+								<div class="top-meta">
+									<span th:text="${art.creacion}"></span> en <a
+										th:href="@{/articulos/categoria(id=${art.categoria.id})}"
+										th:text="${art.categoria.tipo}"></a>
+								</div>
+								<h3 th:text="${art.titulo}"></h3>
+								<p th:text="${art.descripcion}"></p>
+								<a th:href="@{/articulos/detalles(id=${art.id})}"
+									class="read-more">Leer<img
+									th:src="@{/img/icons/double-arrow.png}" alt="#" /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-4 col-md-5 sidebar">
+					<div id="stickySidebar">
+						<div class="widget-item">
+							<div class="categories-widget">
+								<h4 class="widget-title">categorias</h4>
+								<ul>
+									<div th:each="cat : ${categorias}">
+										<li><a th:href="@{/articulos/categoria(id=${cat.id})}"
+											th:text="${cat.tipo}"></a></li>
+									</div>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Blog section end -->
+
+	<div th:replace="master/layout :: bottom-content"></div>
+</body>
+</html>

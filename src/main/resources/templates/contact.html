@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+	<meta charset="utf8">
+</head>
+<body>
+	<div th:replace="master/layout :: top-content"></div>
+
+	<!-- Contact page -->
+	<section class="contact-page" style="margin-top: 15%; margin-bottom: 5%;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7 order-2 order-lg-1">
+					<form class="contact-form">
+						<input type="text" placeholder="Tu Nombre"> 
+						<input type="text" placeholder="Tu Email"> 
+						<input type="text" placeholder="Subject">
+						
+						<textarea placeholder="Message"></textarea>
+						
+						<button class="site-btn">
+							Enviar Mensaje<img src="img/icons/double-arrow.png" alt="#" />
+						</button>
+					</form>
+				</div>
+				<div class="col-lg-5 order-1 order-lg-2 contact-text text-white">
+					<h3>Hola!</h3>
+					<p>
+						Acá vas a poder enviar mensajes sobre alguna consulta que tengas <br>
+						de cualquier tema, incluso puedes enviar recomendaciones para mejorar <br>
+						el funcionamiento y la tematica de la pagina. Todas tus sugerencias <br>
+						van a ser tomadas en cuenta lo antes posible!
+					</p>
+					<div class="cont-info">
+						<div class="ci-icon">
+							<img src="img/icons/location.png" alt="">
+						</div>
+						<div class="ci-text">Cordoba, Argentina</div>
+					</div>
+					<div class="cont-info">
+						<div class="ci-icon">
+							<img src="img/icons/phone.png" alt="">
+						</div>
+						<div class="ci-text">+54 3516329197</div>
+					</div>
+					<div class="cont-info">
+						<div class="ci-icon">
+							<img src="img/icons/mail.png" alt="">
+						</div>	<!-- TODO: REEMPLAZAR POR CORREO PROFESIONAL DE LA PAGINA -->
+						<div class="ci-text">juncosnicolas36@gmail.com</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Contact page end-->
+
+	<div th:replace="master/layout :: bottom-content"></div>
+
+</body>
+</html>

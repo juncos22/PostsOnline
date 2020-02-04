@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment">
+<meta charset="utf8">
+<title></title>
+</head>
+<body>
+	<div th:replace="master/layout :: top-content"></div>
+	<div class="container-fluid" style="margin-top: 15%; margin-bottom: 5px;">
+		<div th:if="${mensaje}">
+			<div class="alert alert-danger alert-dismissible fade show"
+				role="alert">
+				<strong th:text="${mensaje}"></strong>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+		<form th:object="${usuario}" th:action="@{/registrarse}" method="post" style="width: 500px; margin: auto;">
+			<div class="form-group">
+				<label>Nombre de Usuario</label> <input type="text"
+					class="form-control" th:field="*{nombre}" required="required">
+			</div>
+			<div class="form-group">
+				<label>Fecha de Nacimiento</label> <input type="date"
+					class="form-control" th:field="*{nacimiento}" required="required">
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input type="email" class="form-control"
+					th:field="*{email}" required="required">
+			</div>
+			<div class="form-group">
+				<label>Contraseña</label> <input type="password"
+					class="form-control" th:field="*{contrasenia}" required="required">
+			</div>
+			<div class="form-group">
+				<label>Confirmar Contraseña</label> <input type="password"
+					class="form-control" name="pass" required="required">
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+		</form>
+	</div>
+	<div th:replace="master/layout :: bottom-content"></div>
+</body>
+</html>

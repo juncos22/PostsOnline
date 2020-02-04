@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/layout :: head-fragment"></head>
+<body>
+	<div th:replace="master/layout :: top-content"></div>
+
+	<div class="container" style="margin-top: 15%; margin-bottom: 5%;">
+		<h3 class="text-center text-white">Nuevo Articulo</h3>
+		<div class="card" style="width: 600px; margin: auto;">
+			<div class="card-body bg-info">
+				<form th:action="@{/articulos/publicar}" method="post" th:object="${articulo}" style="width: 500px; margin: auto;">
+					<div class="form-group text-dark">
+						<label>TITULO</label>
+						<input class="form-control" type="text" th:field="*{titulo}" required="required">
+					</div>
+					<div class="form-group text-dark">
+						<label>DESCRIPCION</label>
+						<textarea rows="5" cols="20" class="form-control" th:field="*{descripcion}" required="required"></textarea>
+					</div>
+					<div class="form-group text-dark">
+						<label>CUERPO</label>
+						<textarea maxlength="12000" rows="10" cols="30" class="form-control" th:field="*{cuerpo}" required="required"></textarea>
+					</div>
+					<div class="form-group text-dark">
+						<label>CATEGORIA</label>
+						<select class="form-control" th:field="*{categoria}" required="required">
+							<div th:each="cat : ${categorias}">
+								<option th:value="${cat.id}" th:text="${cat.tipo}"></option>
+							</div>
+						</select>
+					</div>
+					<div class="form-group text-dark">
+						<label>FOTO</label>
+						<input class="form-control" type="text" th:field="*{foto}" required="required">
+					</div>
+					<button type="submit" class="btn btn-success btn-block">Publicar Articulo</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="master/layout :: bottom-content"></div>
+</body>
+</html>
